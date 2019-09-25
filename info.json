@@ -1,0 +1,12 @@
+
+	"author": [
+		"KaraMarah"
+	],
+	"description": "A cog that supplies the user with the lyrics to a song upon request.",
+	"install_msg": "Thanks for installing! Make sure to set your genius api key!",
+	"short": "A cog using the Genius API to fetch song lyrics.",
+	"tags": [
+		"bots"
+	],
+	"type": "COG"
+}
