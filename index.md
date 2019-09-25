@@ -1,5 +1,5 @@
 # Genius Cog
-A cog for [Red Discord Bot]https://github.com/Cog-Creators/Red-DiscordBot that fetches the lyrics for a song from Genius.
+A cog for [Red Discord Bot](https://github.com/Cog-Creators/Red-DiscordBot) that fetches the lyrics for a song from Genius.
 
 ## Main Features
 *Fetch song lyrics upon request
