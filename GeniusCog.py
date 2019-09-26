@@ -5,8 +5,12 @@ from redbot.core.utils import chat_formatting as chat
 from redbot.core import Config
 import lyricsgenius
 
-class GeniusCog(commands.Cog):
+class GeniusCogTest(commands.Cog):
     """Fetches lyrics from Genius"""
+
+    def __init__(self, bot):
+        self.bot = bot
+
     @commands.command()
     @checks.is_owner()
     async def geniusapi(self, ctx):
@@ -21,7 +25,7 @@ class GeniusCog(commands.Cog):
         await ctx.maybe_send_embed(message)
 
     @commands.command()
-    async def genius(self, ctx, *title: str, *artist: str):
+    async def genius(self, ctx, title: str, artist: str):
         geniusToken = await self.bot.db.api_tokens.get_raw("genius", default={"access_token": None})
         if geniusToken["access_token"] is None:
             return await ctx.send("The Genius access token has not been set.")
