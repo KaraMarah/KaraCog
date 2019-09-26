@@ -4,6 +4,7 @@ from redbot.core import checks
 from redbot.core.utils import chat_formatting as chat
 from redbot.core import Config
 import requests
+import rauth
 
 class GeniusCog(commands.Cog):
     """Fetches lyrics from Genius"""
