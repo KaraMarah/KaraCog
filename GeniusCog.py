@@ -31,6 +31,6 @@ class GeniusCogTest(commands.Cog):
             return await ctx.send("The Genius access token has not been set.")
         genius = lyricsgenius.Genius(geniusToken["access_token"])
         genius.skip_non_songs = True
-        genius.remove_section_headers = True
+        genius.remove_section_headers = False
         song = genius.search_song(title, artist)
         await ctx.send(song.lyrics)
