@@ -7,10 +7,6 @@ import requests
 
 class GeniusCog(commands.Cog):
     """Fetches lyrics from Genius"""
-
-    def __init__(self, bot):
-        self.bot = bot
-
     @commands.command()
     @checks.is_owner()
     async def geniusapi(self, ctx):
