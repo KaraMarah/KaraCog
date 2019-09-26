@@ -7,7 +7,6 @@ import lyricsgenius
 
 class GeniusCogTest(commands.Cog):
     """Fetches lyrics from Genius"""
-
     def __init__(self, bot):
         self.bot = bot
 
