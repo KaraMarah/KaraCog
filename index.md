@@ -1,8 +1,7 @@
 # Genius Cog
 A cog for [Red Discord Bot](https://github.com/Cog-Creators/Red-DiscordBot) that fetches the lyrics for a song from Genius.
 
-## Main Features
-* Fetch song lyrics upon request
-* Change how you recieve the lyrics
-  * Embed the URL to the Genius page for the song
-  * Send a Discord message with all the lyrics
+## Special Thanks
+I'd just like to thank my friends who helped me come up with this idea, and the wonderful people at the official [Red Discord Bot](https://discordapp.com/invite/red) discord server for all of their help with a few of the intricate details.
+
+I truly hope you enjoy my work!
