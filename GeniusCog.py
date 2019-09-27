@@ -34,7 +34,7 @@ class GeniusCogTest(commands.Cog):
         genius.skip_non_songs = True
         genius.remove_section_headers = False
         song = genius.search_song(search)
-        if len(song.lyrics) >= 2000
+        if len(song.lyrics) >= 2000:
             pagelyrics = redbot.core.utils.chat_formatting.pagify(song.lyrics, delims = ['\n'])
             await ctx.send(pagelyrics)
         else:
