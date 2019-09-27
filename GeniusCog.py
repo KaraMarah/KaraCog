@@ -2,6 +2,7 @@ import discord
 from redbot.core import commands
 from redbot.core import checks
 from redbot.core.utils import chat_formatting as chat
+from redbot.core.utils.chat_formatting import pagify
 from redbot.core import Config
 import lyricsgenius
 
@@ -27,13 +28,15 @@ class GeniusCogTest(commands.Cog):
     @commands.command()
     async def genius(self, ctx, *search: str):
         geniusToken = await self.bot.db.api_tokens.get_raw("genius", default={"access_token": None})
+        pagify = redbot.core.utils.chat_formatting.pagify()
         if geniusToken["access_token"] is None:
             return await ctx.send("The Genius access token has not been set. Use {}geniusapi for help.").format(ctx.prefix)
         genius = lyricsgenius.Genius(geniusToken["access_token"])
         genius.skip_non_songs = True
         genius.remove_section_headers = False
         song = genius.search_song(search)
-        if len(song.lyrics) >= 2000:
-            await ctx.send("Sorry! This song is too long for me to send!")
+        if len(song.lyrics) >= 2000
+            pagelyrics = pagify(song.lyrics, delims = ['\n'])
+            await ctx.send(pagelyrics)
         else:
             await ctx.send(song.lyrics)
