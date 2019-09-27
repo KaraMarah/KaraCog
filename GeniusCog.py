@@ -28,7 +28,6 @@ class GeniusCogTest(commands.Cog):
     @commands.command()
     async def genius(self, ctx, *search: str):
         geniusToken = await self.bot.db.api_tokens.get_raw("genius", default={"access_token": None})
-        pagify = redbot.core.utils.chat_formatting.pagify()
         if geniusToken["access_token"] is None:
             return await ctx.send("The Genius access token has not been set. Use {}geniusapi for help.").format(ctx.prefix)
         genius = lyricsgenius.Genius(geniusToken["access_token"])
@@ -36,7 +35,7 @@ class GeniusCogTest(commands.Cog):
         genius.remove_section_headers = False
         song = genius.search_song(search)
         if len(song.lyrics) >= 2000
-            pagelyrics = pagify(song.lyrics, delims = ['\n'])
+            pagelyrics = redbot.core.utils.chat_formatting.pagify(song.lyrics, delims = ['\n'])
             await ctx.send(pagelyrics)
         else:
             await ctx.send(song.lyrics)
