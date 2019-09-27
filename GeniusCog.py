@@ -36,4 +36,4 @@ class GeniusCogTest(commands.Cog):
         if len(song.lyrics) >= 2000:
             await ctx.send("Sorry! This song is too long for me to send!")
         else:
-            await ctx.maybe_send_embed(song.lyrics)
+            await ctx.send(song.lyrics)
