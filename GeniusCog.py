@@ -27,6 +27,7 @@ class GeniusCogTest(commands.Cog):
 
     @commands.command()
     async def genius(self, ctx, *search: str):
+        """Grabs the lyrics from the requested song"""
         geniusToken = await self.bot.db.api_tokens.get_raw("genius", default={"access_token": None})
         if geniusToken["access_token"] is None:
             return await ctx.send("The Genius access token has not been set. Use {}geniusapi for help.").format(ctx.prefix)
