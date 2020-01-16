@@ -6,7 +6,7 @@ from redbot.core.utils.chat_formatting import pagify
 from redbot.core import Config
 import lyricsgenius
 
-class GeniusCogTest(commands.Cog):
+class GeniusCog(commands.Cog):
     """Fetches lyrics from Genius"""
 
     def __init__(self, bot):
@@ -28,9 +28,9 @@ class GeniusCogTest(commands.Cog):
     @commands.command()
     async def genius(self, ctx, *search: str):
         """Grabs the lyrics from the requested song"""
-        geniusToken = await self.bot.db.api_tokens.get_raw("genius", default={"access_token": None})
-        if geniusToken["access_token"] is None:
-            return await ctx.send("The Genius access token has not been set. Use {}geniusapi for help.").format(ctx.prefix)
+        geniusToken = await self.bot.get_shared_api_tokens("genius")
+        if geniusToken.get("access_token") is None:
+            return await ctx.send("The Genius access token has not been set. Use `?geniusapi` for help.")
         genius = lyricsgenius.Genius(geniusToken["access_token"])
         genius.skip_non_songs = True
         genius.remove_section_headers = False
