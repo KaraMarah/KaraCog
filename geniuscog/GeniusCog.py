@@ -34,12 +34,9 @@ class GeniusCog(commands.Cog):
             genius = lyricsgenius.Genius(geniusToken["access_token"])
             genius.skip_non_songs = True
             genius.remove_section_headers = False
-            if len(search) == 0:
-                await ctx.send("Please enter some search terms!")
-            else:
-                song = genius.search_song(search)
-                if len(song.lyrics) >= 2000:
-                    for page in pagify(song.lyrics):
-                        await ctx.send(page)
-                    else:
-                        await ctx.send(song.lyrics)
+            song = genius.search_song(search)
+            if len(song.lyrics) >= 2000:
+                for page in pagify(song.lyrics):
+                    await ctx.send(page)
+                else:
+                    await ctx.send(song.lyrics)
