@@ -26,7 +26,7 @@ class GeniusCog(commands.Cog):
         await ctx.maybe_send_embed(message)
 
     @commands.command()
-    async def genius(self, ctx, *search: str):
+    async def genius(self, ctx, *, search: str):
         """Grabs the lyrics from the requested song"""
         geniusToken = await self.bot.get_shared_api_tokens("genius")
         if geniusToken.get("access_token") is None:
