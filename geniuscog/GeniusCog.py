@@ -40,3 +40,4 @@ class GeniusCog(commands.Cog):
                     await ctx.send(page)
                 else:
                     await ctx.send(song.lyrics)
+                    
