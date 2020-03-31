@@ -36,7 +36,7 @@ class GeniusCog(commands.Cog):
             genius.skip_non_songs = True
             genius.remove_section_headers = False
             song = genius.search_song(search)
-            if len(song.lyrics) >= 2000:
+            if len(song.lyrics) >= 1999:
                 for page in pagify(song.lyrics):
                     await ctx.send(page)
                 else:
