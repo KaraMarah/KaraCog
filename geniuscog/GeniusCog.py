@@ -30,7 +30,7 @@ class GeniusCog(commands.Cog):
         """Grabs the lyrics from the requested song"""
         geniusToken = await self.bot.get_shared_api_tokens("genius")
         if geniusToken.get("access_token") is None:
-            return await ctx.send("The Genius access token has not been set. Use `?geniusapi` for help.")
+            return await ctx.send("The Genius access token has not been set. Use `{}geniusapi` for help.").format(ctx.prefix)
         else:
             genius = lyricsgenius.Genius(geniusToken["access_token"])
             genius.skip_non_songs = True
