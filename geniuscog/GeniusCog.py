@@ -28,13 +28,13 @@ class GeniusCog(commands.Cog):
     @commands.command()
     async def genius(self, ctx, *, search: str):
         """Grabs the lyrics from the requested song"""
-        geniusToken = await self.bot.get_shared_api_tokens("genius")
-        if geniusToken.get("access_token") is None:
+        genius_token = await self.bot.get_shared_api_tokens("genius")
+        if genius_token.get("access_token") is None:
             return await ctx.send("The Genius access token has not been set. Use `{}geniusapi` for help.").format(ctx.prefix)
         else:
-            songSearch = lyricsgenius.Genius(geniusToken["access_token"])
-            songSearch.skip_non_songs = True
-            songSearch.remove_section_headers = False
-            song = songSearch.search_song(search)
+            song_search = lyricsgenius.Genius(geniusToken["access_token"])
+            song_search.skip_non_songs = True
+            song_search.remove_section_headers = False
+            song = song_search.search_song(search)
             for page in pagify(song.lyrics):
                 await ctx.send(page)
