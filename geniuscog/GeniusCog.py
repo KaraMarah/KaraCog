@@ -26,15 +26,15 @@ class GeniusCog(commands.Cog):
         await ctx.maybe_send_embed(message)
 
     @commands.command()
-    async def genius(self, ctx, *search: str):
+    async def genius(self, ctx, *, search: str):
         """Grabs the lyrics from the requested song"""
         geniusToken = await self.bot.get_shared_api_tokens("genius")
         if geniusToken.get("access_token") is None:
             return await ctx.send("The Genius access token has not been set. Use `{}geniusapi` for help.").format(ctx.prefix)
         else:
-            genius = lyricsgenius.Genius(geniusToken["access_token"])
-            genius.skip_non_songs = True
-            genius.remove_section_headers = False
-            song = genius.search_song(search)
+            songSearch = lyricsgenius.Genius(geniusToken["access_token"])
+            songSearch.skip_non_songs = True
+            songSearch.remove_section_headers = False
+            song = songSearch.search_song(search)
             for page in pagify(song.lyrics):
                 await ctx.send(page)
