@@ -37,4 +37,4 @@ class GeniusCog(commands.Cog):
             song_search.remove_section_headers = False
             song = song_search.search_song(search)
             for page in pagify(song.lyrics):
-                await ctx.maybe_send_embed(page)
+                await ctx.send(page)
