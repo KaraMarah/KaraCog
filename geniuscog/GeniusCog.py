@@ -32,7 +32,7 @@ class GeniusCog(commands.Cog):
         if genius_token.get("access_token") is None:
             return await ctx.send("The Genius access token has not been set. Use `{}geniusapi` for help.").format(ctx.prefix)
         else:
-            song_search = lyricsgenius.Genius(geniusToken["access_token"])
+            song_search = lyricsgenius.Genius(genius_token["access_token"])
             song_search.skip_non_songs = True
             song_search.remove_section_headers = False
             song = song_search.search_song(search)
