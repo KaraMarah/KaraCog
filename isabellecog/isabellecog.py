@@ -12,6 +12,7 @@ class isabellecog(commands.Cog):
 
     @commands.command()
     async def i(self, ctx, action: str, *, object: str):
+        """bond with isabelle"""
         bad_words = ["fuck", "kill", "beat"]
         if action in bad_words:
             await ctx.send(f"I don't {action} {object} at all.")
@@ -20,4 +21,5 @@ class isabellecog(commands.Cog):
 
     @commands.command()
     async def bajinga(self, ctx):
+        """bajinga!"""
         await ctx.send("What?")
