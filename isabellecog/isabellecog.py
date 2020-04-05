@@ -1,6 +1,7 @@
 import discord
 import random
 import string
+import asyncio
 from redbot.core import commands
 from redbot.core import checks
 from redbot.core.utils import chat_formatting as chat
@@ -32,8 +33,22 @@ class isabellecog(commands.Cog):
         await ctx.author.send(f"Have a good night's sleep, {ctx.author.name}!")
 
     @commands.command()
-    async def hellpit(self, ctx, p2: discord.Member):
-        """Welcome to the hellpit. Only one may leave."""
+    async def hellpit(self, ctx,
+                      p2: discord.Member, mode: str = "normal"):
+        """
+        Welcome to the hellpit. Only one may leave.
+
+        Modes: normal, hardcore
+        """
+
+        # XXX This implementation is dumb, but...
+        # It makes the most sense to the end user. probably.
+        # Returns on hardcore if caller can't ban.
+        cant_ban = ctx.author.guild_permissions.ban_members
+        if mode == "hardcore" and cant_ban:
+            return await ctx.send(
+                "**You can't ban!** No hardcore mode for you."
+            )
 
         # Players
         p1 = ctx.author
@@ -48,7 +63,7 @@ class isabellecog(commands.Cog):
 
         # Names
         weird_names = [
-            "dummy", "silly head", "pig carcass", 
+            "dummy", "silly head", "pig carcass",
             "bad at hellpit", "i lost the game", "has no feet",
             "god left me unfinished", "piss", "i hit villagers",
             "i cant eat", "bread", "hell piggy", "30 feral hogs",
@@ -79,7 +94,12 @@ class isabellecog(commands.Cog):
             )
 
         # Sends Prompt
-        prompt_str = (
+        if mode == "normal":
+            consequence = "given a weird nickname"
+        elif mode == "hardcore":
+            consequence = "banned (HARDCORE MODE)"
+
+        prompt = (
             "**You have fallen into the hellpit, "
             f"{p1.name} and {p2.name}.**\n"
             "_I am the devil, and you will play my game._\n\n"
@@ -91,14 +111,14 @@ class isabellecog(commands.Cog):
             "Play will continue until all letters are gone.\n\n"
             "Letters may repeat, so you may have a letter "
             "Whoever has the most letters at the end wins. "
-            "The loser will be killed/given a weird nickname."
+            f"The loser will be **{consequence}**."
         )
-        await ctx.send(prompt_str)
+        await ctx.send(prompt)
 
         # Handling
         finished = False
         while not finished:
-    
+
             # Waits for correct message
             working_msg = await self.bot.wait_for(
                 'message', check=is_correct
@@ -122,7 +142,6 @@ class isabellecog(commands.Cog):
                     f"`{letter}` was not in the secret, "
                     f"{working_msg.author.mention}."
                 )
-            
 
             # Finish on empty list
             if not secret:
@@ -131,21 +150,38 @@ class isabellecog(commands.Cog):
         # Detect winner
         if len(p1_letters) > len(p2_letters):
             winner = p1
+            winner_letters = p1_letters
             loser = p2
+            loser_letters = p2_letters
         elif len(p2_letters) > len(p1_letters):
             winner = p2
+            winner_letters = p2_letters
             loser = p1
+            loser_letters = p1_letters
 
         # Do final stuff
         new_nick = random.choice(weird_names)
 
-        final_str = (
-            f"**The game is over, and the pit is filled.**\n"
+        if mode == "normal":
+            punishment = f"Their loss has earned them the nickname {new_nick}."
+        elif mode == "hardcore":
+            punishment = "They will now be banned."
+            
+
+        final = (
+            "**The game is over, and the pit is filled.**\n"
             f"_`{''.join(orig_secret)}` was the set of letters._\n\n"
-            f"**{winner.name}** won and gets to go back to the surface.\n\n"
-            f"**{loser.name}** lost and gets the nickname `{new_nick}`.\n\n"
+            f"**{winner.name}** won and gets to go back to the surface.\n"
+            f"_They had {len(winner_letters)} letters.\n\n"
+            f"**{loser.name}** lost. {punishment}\n"
+            f"_They had {len(loser_letters)} letters.\n\n"
             f"_Welcome to hell, {loser.mention}. You're here forever._"
         )
 
-        await loser.edit(nick=new_nick)
-        await ctx.send(final_str)
+        if mode == "normal":
+            await loser.edit(nick=new_nick)
+            await ctx.send(final)
+        elif mode== "hardcore":
+            await ctx.send(final)
+            asyncio.sleep(15.0)
+            await ctx.guild.ban(loser, reason=new_nick)
