@@ -1,4 +1,3 @@
-import discord
 from redbot.core import commands
 from redbot.core import checks
 from redbot.core.utils import chat_formatting as chat
