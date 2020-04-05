@@ -45,10 +45,25 @@ class isabellecog(commands.Cog):
         # Names
         weird_names = [
             "dummy", "silly head", "pig carcass", 
-            "bad at hellpit", "lost the game", "has no feet",
+            "bad at hellpit", "i lost the game", "has no feet",
             "god left me unfinished", "piss", "i hit villagers",
             "i cant eat", "bread", "hell piggy", "30 feral hogs",
-            "aaaaassssssssss", "i write bad poetry", "never"
+            "aaaaassssssssss", "i write bad poetry", "never",
+            "destroy my limeaid wow!", "i own sonic forces",
+            "i like sonic 06", "date me infinite from sonic",
+            "peetah died i cried", "stick bread in my ear",
+            "eat my chair", "i deleted my system32",
+            "i'm scared.", "stank hole", "overengineered toenails",
+            "the gecs beat me up", "wow", "tf2 homework mod",
+            "pinkie pie stan", "i play overwatch",
+            "ellen as live action monokuma",
+            "bubububububububububububub", "i'm elton john!",
+            "stan nothing the void lingers", "im not poggers :<",
+            "shave my head", "i got hacked at furcon",
+            "i simped the pink panther", "im drunk birds",
+            "i was bullied by my mother", "eggs in my nostrils",
+            "wetbeans andy", "ant hoarder", "the one who pees the bed",
+            "scared by pots and pans", "SSN 712-45-7834"
         ]
 
         # Check
