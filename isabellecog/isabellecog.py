@@ -82,7 +82,7 @@ class isabellecog(commands.Cog):
         while not finished:
     
             # Waits for correct message
-            working_msg = self.bot.wait_for(
+            working_msg = await self.bot.wait_for(
                 'message', check=is_correct
             )
             letter = working_msg.content
