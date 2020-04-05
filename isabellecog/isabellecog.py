@@ -8,7 +8,7 @@ class isabellecog(commands.Cog):
     """A set of custom commands for Isabelle Bot"""
 
     def __init__(self, bot):
-        self.bot = Bot
+        self.bot = bot
 
     @commands.command()
     async def i(self, ctx, action: str, object: str):
