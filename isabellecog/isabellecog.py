@@ -17,3 +17,7 @@ class isabellecog(commands.Cog):
             await ctx.send(f"I don't {action} {object} at all.")
         else:
             await ctx.send(f"I {action} {object} too, {ctx.author.mention}!")
+
+    @commands.command()
+    async def bajinga(self, ctx):
+        await ctx.send("What?")
