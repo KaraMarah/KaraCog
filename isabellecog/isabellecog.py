@@ -40,7 +40,7 @@ class isabellecog(commands.Cog):
         # Secret
         letters = string.ascii_lowercase
         orig_secret = random.sample(letters, 9)
-        secret = orig_secret  
+        secret = orig_secret.copy()
 
         # Names
         weird_names = [
@@ -57,7 +57,6 @@ class isabellecog(commands.Cog):
             return (
                 (msg.author == p1 or msg.author == p2)
                 and len(msg.content) == 1
-                and msg.content in secret
             )
 
         # Sends Prompt
@@ -89,11 +88,22 @@ class isabellecog(commands.Cog):
 
             # Adds the letter to the correct player list.
             # Removes it from the secret.
-            if working_msg.author == p1:
-                p1_letters.append(letter)
-            elif working_msg.author == p2:
-                p2_letters.append(letter)
-            secret.remove(letter)
+            if letter in secret:
+                await ctx.send(
+                    f"`{letter}` was in the secret. You now own it, "
+                    f"{working_msg.author.mention}."
+                )
+                if working_msg.author == p1:
+                    p1_letters.append(letter)
+                elif working_msg.author == p2:
+                    p2_letters.append(letter)
+                secret.remove(letter)
+            else:
+                await ctx.send(
+                    f"`{letter}` was not in the secret, "
+                    f"{working_msg.author.mention}."
+                )
+            
 
             # Finish on empty list
             if not secret:
@@ -114,7 +124,7 @@ class isabellecog(commands.Cog):
             f"**The game is over, and the pit is filled.**\n"
             f"_`{''.join(orig_secret)}` was the set of letters._\n\n"
             f"**{winner.name}** won and gets to go back to the surface.\n\n"
-            f"**{loser.name}** lost and gets the nickname {new_nick}.\n\n"
+            f"**{loser.name}** lost and gets the nickname`{new_nick}``.\n\n"
             f"_Welcome to hell, {loser.mention}. You're here forever._"
         )
 
