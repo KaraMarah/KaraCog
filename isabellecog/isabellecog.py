@@ -12,4 +12,8 @@ class isabellecog(commands.Cog):
 
     @commands.command()
     async def i(self, ctx, action: str, object: str):
-        await ctx.send(f"I {action} {object} too, {ctx.author.mention}!")
+        bad_words = ["fuck", "kill", "beat"]
+        if action in bad_words:
+            await ctx.send(f"I don't {action} {object} at all.")
+        else:
+            await ctx.send(f"I {action} {object} too, {ctx.author.mention}!")
