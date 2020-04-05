@@ -124,9 +124,9 @@ class isabellecog(commands.Cog):
             f"**The game is over, and the pit is filled.**\n"
             f"_`{''.join(orig_secret)}` was the set of letters._\n\n"
             f"**{winner.name}** won and gets to go back to the surface.\n\n"
-            f"**{loser.name}** lost and gets the nickname`{new_nick}`.\n\n"
+            f"**{loser.name}** lost and gets the nickname `{new_nick}`.\n\n"
             f"_Welcome to hell, {loser.mention}. You're here forever._"
         )
 
-        await loser.edit(name=new_nick)
+        await loser.edit(nick=new_nick)
         await ctx.send(final_str)
