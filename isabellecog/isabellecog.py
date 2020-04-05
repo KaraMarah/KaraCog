@@ -34,8 +34,8 @@ class isabellecog(commands.Cog):
         # Players
         p1 = ctx.author
         # p2 from function signature
-        p1.letters = []
-        p2.letters = []
+        p1_letters = []
+        p2_letters = []
 
         # Secret
         letters = string.ascii_lowercase
@@ -90,9 +90,9 @@ class isabellecog(commands.Cog):
             # Adds the letter to the correct player list.
             # Removes it from the secret.
             if working_msg.author == p1:
-                p1.letters.append(letter)
+                p1_letters.append(letter)
             elif working_msg.author == p2:
-                p2.letters.append(letter)
+                p2_letters.append(letter)
             secret.remove(letter)
 
             # Finish on empty list
@@ -100,10 +100,10 @@ class isabellecog(commands.Cog):
                 finished = True
 
         # Detect winner
-        if len(p1.letters) > len(p2.letters):
+        if len(p1_letters) > len(p2_letters):
             winner = p1
             loser = p2
-        elif len(p2.letters) > len(p1.letters):
+        elif len(p2_letters) > len(p1_letters):
             winner = p2
             loser = p1
 
