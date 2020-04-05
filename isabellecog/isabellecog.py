@@ -99,24 +99,24 @@ class isabellecog(commands.Cog):
             if not secret:
                 finished = True
 
-    # Detect winner
-    if len(p1.letters) > len(p2.letters):
-        winner = p1
-        loser = p2
-    elif len(p2.letters) > len(p1.letters):
-        winner = p2
-        loser = p1
+        # Detect winner
+        if len(p1.letters) > len(p2.letters):
+            winner = p1
+            loser = p2
+        elif len(p2.letters) > len(p1.letters):
+            winner = p2
+            loser = p1
 
-    # Do final stuff
-    new_nick = random.choice(weird_names)
+        # Do final stuff
+        new_nick = random.choice(weird_names)
 
-    final_str = (
-        f"**The game is over, and the pit is filled.**\n"
-        f"_`{''.join(orig_secret)}` was the set of letters._\n\n"
-        f"**{winner.name}** won and gets to go back to the surface.\n\n"
-        f"**{loser.name}** lost and gets the nickname {new_nick}.\n\n"
-        f"_Welcome to hell, {loser.mention}. You're here forever._"
-    )
+        final_str = (
+            f"**The game is over, and the pit is filled.**\n"
+            f"_`{''.join(orig_secret)}` was the set of letters._\n\n"
+            f"**{winner.name}** won and gets to go back to the surface.\n\n"
+            f"**{loser.name}** lost and gets the nickname {new_nick}.\n\n"
+            f"_Welcome to hell, {loser.mention}. You're here forever._"
+        )
 
-    await loser.edit(name=new_nick)
-    await ctx.send(final_str)
+        await loser.edit(name=new_nick)
+        await ctx.send(final_str)
