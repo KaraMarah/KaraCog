@@ -28,7 +28,7 @@ class isabellecog(commands.Cog):
         await ctx.send("What?")
 
     @commands.command()
-    async def hellpit(self, ctx, p2: discord.Member, seed: str):
+    async def hellpit(self, ctx, p2: discord.Member):
         """Welcome to the hellpit. Only one may leave."""
 
         # Players
