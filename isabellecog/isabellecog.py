@@ -172,9 +172,9 @@ class isabellecog(commands.Cog):
             "**The game is over, and the pit is filled.**\n"
             f"_`{''.join(orig_secret)}` was the set of letters._\n\n"
             f"**{winner.name}** won and gets to go back to the surface.\n"
-            f"_They had {len(winner_letters)} letters.\n\n"
+            f"_They had {len(winner_letters)} letters._\n\n"
             f"**{loser.name}** lost. {punishment}\n"
-            f"_They had {len(loser_letters)} letters.\n\n"
+            f"_They had {len(loser_letters)} letters._\n\n"
             f"_Welcome to hell, {loser.mention}. You're here forever._"
         )
 
@@ -183,5 +183,5 @@ class isabellecog(commands.Cog):
             await ctx.send(final)
         elif mode== "hardcore":
             await ctx.send(final)
-            asyncio.sleep(15.0)
+            await asyncio.sleep(15.0)
             await ctx.guild.ban(loser, reason=new_nick)
