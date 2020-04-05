@@ -12,4 +12,4 @@ class isabellecog(commands.Cog):
 
     @commands.command()
     async def i(self, ctx, action: str, object: str):
-        await ctx.send(f"I {action} {object} too, {ctx.mention}!")
+        await ctx.send(f"I {action} {object} too, {ctx.author.mention}!")
