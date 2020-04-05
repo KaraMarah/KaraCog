@@ -44,7 +44,7 @@ class isabellecog(commands.Cog):
         # XXX This implementation is dumb, but...
         # It makes the most sense to the end user. probably.
         # Returns on hardcore if caller can't ban.
-        cant_ban = ctx.author.guild_permissions.ban_members
+        cant_ban = not ctx.author.guild_permissions.ban_members
         if mode == "hardcore" and cant_ban:
             return await ctx.send(
                 "**You can't ban!** No hardcore mode for you."
