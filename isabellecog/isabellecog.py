@@ -39,7 +39,7 @@ class isabellecog(commands.Cog):
 
         # Secret
         letters = string.ascii_lowercase
-        orig_secret = [random.sample(letters) for _ in range(9)]
+        orig_secret = random.sample(letters, 9)
         secret = orig_secret  
 
         # Names
