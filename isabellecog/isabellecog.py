@@ -91,7 +91,7 @@ class isabellecog(commands.Cog):
 
             # Waits for response
             try:
-                consent_resp = self.bot.wait_for(
+                consent_resp = await self.bot.wait_for(
                     'message',
                     check=lambda m: m.author == p2,
                     timeout=60.0
