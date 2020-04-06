@@ -50,10 +50,13 @@ class isabellecog(commands.Cog):
         await ctx.author.send(f"Have a good night's sleep, {ctx.author.name}!")
 
     @commands.command()
-    async def hellpit(self, ctx,
-                      p2: discord.Member, mode: str = "normal"):
+    async def hellpit(self, ctx, p2: discord.Member, 
+                      length: int = 9, mode: str = "normal"):
         """
         Welcome to the hellpit. Only one may leave.
+
+        length (default: 9) - How many letters you want in the set.
+        mode (default: normal) - Which mode you want to play in.
 
         Modes: normal, hardcore
         """
@@ -114,7 +117,7 @@ class isabellecog(commands.Cog):
 
         # Secret
         letters = string.ascii_lowercase
-        orig_secret = random.sample(letters, 9)
+        orig_secret = random.sample(letters, length)
         secret = orig_secret.copy()
 
         # Names
@@ -138,7 +141,7 @@ class isabellecog(commands.Cog):
             "i simped the pink panther", "im drunk birds",
             "i was bullied by my mother", "eggs in my nostrils",
             "wetbeans andy", "ant hoarder", "the one who pees the bed",
-            "scared by pots and pans", "SSN 712-45-7834"
+            "scared by pots and pans", "bajinga!", "SSN 712-45-7834"
         ]
 
         # Check for game logic
