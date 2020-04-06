@@ -83,7 +83,7 @@ class isabellecog(commands.Cog):
         else:
             consent_msg = await ctx.send(
                 f"{p2.mention}, "
-                f"**{p1}** is attempting to throw you in the hellpit.\n"
+                f"**{p1.name}** is attempting to throw you in the hellpit.\n"
                 f"The mode is `{mode}`. Do you wish to proceed?\n\n"
                 "_Type `i accept` to accept, or anything else to cancel. "
                 "This message will time out in one minute._"
