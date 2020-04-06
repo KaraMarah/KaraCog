@@ -15,11 +15,13 @@ class isabellecog(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def i(self, ctx, action: str, *, thing: str = None):
+    async def i(self, ctx, action: str, *, thing: str = ""):
         """bond with isabelle"""
         bad_words = ["fuck", "kill", "beat"]
         if action in bad_words:
             await ctx.send(f"I don't {action} {thing} at all.")
+        elif thing = "":
+            await ctx.send(f"I {action} too, {ctx.author.mention}!")
         else:
             await ctx.send(f"I {action} {thing} too, {ctx.author.mention}!")
 
