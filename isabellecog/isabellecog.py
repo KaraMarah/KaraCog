@@ -195,6 +195,7 @@ class isabellecog(commands.Cog):
                 elif working_msg.author == p2:
                     p2_letters.append(letter)
                 secret.remove(letter)
+                f"There are {len(secret)} letters left in the set."
             else:
                 await ctx.send(
                     f"`{letter}` was not in the secret, "
@@ -221,7 +222,7 @@ class isabellecog(commands.Cog):
         new_nick = random.choice(weird_names)
 
         if mode == "normal":
-            punishment = f"Their loss has earned them the nickname {new_nick}."
+            punishment = f"Their loss has earned them the nickname `{new_nick}`."
         elif mode == "hardcore":
             punishment = "They will now be banned."
 
