@@ -195,7 +195,7 @@ class isabellecog(commands.Cog):
                 elif working_msg.author == p2:
                     p2_letters.append(letter)
                 secret.remove(letter)
-                f"There are {len(secret)} letters left in the set."
+                await ctx.send(f"There are {len(secret)} letters left in the set.")
             else:
                 await ctx.send(
                     f"`{letter}` was not in the secret, "
