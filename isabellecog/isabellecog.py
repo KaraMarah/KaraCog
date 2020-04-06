@@ -26,6 +26,23 @@ class isabellecog(commands.Cog):
     @commands.command()
     async def bajinga(self, ctx):
         """bajinga!"""
+        await asyncio.sleep(0.3)
+
+        async with ctx.typing():
+            await asyncio.sleep(3.0)
+
+        await asyncio.sleep(0.7)
+
+        async with ctx.typing():
+            await asyncio.sleep(0.5)
+
+        await asyncio.sleep(0.5)
+
+        async with ctx.typing():
+            await asyncio.sleep(1.5)
+
+        await asyncio.sleep(0.8)
+
         await ctx.send("What?")
 
     @commands.command()
@@ -41,20 +58,59 @@ class isabellecog(commands.Cog):
         Modes: normal, hardcore
         """
 
+        # Players
+        p1 = ctx.author
+        # p2 from function signature
+        p1_letters = []
+        p2_letters = []
+
         # XXX This implementation is dumb, but...
         # It makes the most sense to the end user. probably.
-        # Returns on hardcore if caller can't ban.
+
+        # Initial checks
+        # Ban Ability on hardcore mode
         cant_ban = not ctx.author.guild_permissions.ban_members
         if mode == "hardcore" and cant_ban:
             return await ctx.send(
                 "**You can't ban!** No hardcore mode for you."
             )
 
-        # Players
-        p1 = ctx.author
-        # p2 from function signature
-        p1_letters = []
-        p2_letters = []
+        # Check For self
+        elif p1 == p2:
+            return await ctx.send("**Can't throw yourself in the hellpit!**")
+
+        # Get consent from participant
+        else:
+            consent_msg = await ctx.send(
+                f"{p2.mention}, "
+                f"**{p1}** is attempting to throw you in the hellpit.\n"
+                f"The mode is `{mode}`. Do you wish to proceed?\n\n"
+                "_Type `i accept` to accept, or anything else to cancel. "
+                "This message will time out in one minute._"
+            )
+
+            # Waits for response
+            try:
+                consent_resp = self.bot.wait_for(
+                    'message',
+                    check=lambda m: m.author == p2,
+                    timeout=60.0
+                )
+            # On Timeout
+            except asyncio.TimeoutError:
+                return await consent_msg.edit(
+                    content="**Request timed out.**"
+                )
+            # If response received
+            else:
+                # Deletes and continues if consenting
+                if consent_resp.content.lower() == "i accept":
+                    await consent_msg.delete()
+                # Stops if not
+                else:
+                    return await consent_msg.edit(
+                        content="**Request cancelled.**"
+                    )
 
         # Secret
         letters = string.ascii_lowercase
@@ -85,7 +141,7 @@ class isabellecog(commands.Cog):
             "scared by pots and pans", "SSN 712-45-7834"
         ]
 
-        # Check
+        # Check for game logic
         def is_correct(msg):
             """Checks whether the message is gucci or not."""
             return (
@@ -98,7 +154,6 @@ class isabellecog(commands.Cog):
             consequence = "given a weird nickname"
         elif mode == "hardcore":
             consequence = "banned (HARDCORE MODE)"
-
         prompt = (
             "**You have fallen into the hellpit, "
             f"{p1.name} and {p2.name}.**\n"
@@ -123,7 +178,7 @@ class isabellecog(commands.Cog):
             working_msg = await self.bot.wait_for(
                 'message', check=is_correct
             )
-            letter = working_msg.content
+            letter = working_msg.content.lower()
 
             # Adds the letter to the correct player list.
             # Removes it from the secret.
@@ -166,7 +221,6 @@ class isabellecog(commands.Cog):
             punishment = f"Their loss has earned them the nickname {new_nick}."
         elif mode == "hardcore":
             punishment = "They will now be banned."
-            
 
         final = (
             "**The game is over, and the pit is filled.**\n"
@@ -181,7 +235,7 @@ class isabellecog(commands.Cog):
         if mode == "normal":
             await loser.edit(nick=new_nick)
             await ctx.send(final)
-        elif mode== "hardcore":
+        elif mode == "hardcore":
             await ctx.send(final)
             await asyncio.sleep(15.0)
             await ctx.guild.ban(loser, reason=new_nick)

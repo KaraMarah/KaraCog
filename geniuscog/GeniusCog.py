@@ -21,8 +21,8 @@ class GeniusCog(commands.Cog):
             "1. Create an API client at [Genius Developers](https://genius.com/developers)\n"
             "2. Generate a new access token.\n"
             "3. Copy your access token.\n"
-            "4. Use `{}set api genius access_token,<token_here>`"
-        ).format(ctx.prefix)
+            f"4. Use `{ctx.prefix}set api genius access_token,<token_here>`"
+        )
         await ctx.maybe_send_embed(message)
 
     @commands.command()
@@ -30,7 +30,10 @@ class GeniusCog(commands.Cog):
         """Grabs the lyrics from the requested song"""
         genius_token = await self.bot.get_shared_api_tokens("genius")
         if genius_token.get("access_token") is None:
-            return await ctx.send("The Genius access token has not been set. Use `{}geniusapi` for help.").format(ctx.prefix)
+            return await ctx.send(
+                "The Genius access token has not been set. "
+                f"Use `{ctx.prefix}geniusapi` for help."
+            )
         else:
             song_search = lyricsgenius.Genius(genius_token["access_token"])
             song_search.skip_non_songs = True
