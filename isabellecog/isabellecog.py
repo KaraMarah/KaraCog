@@ -190,21 +190,24 @@ class isabellecog(commands.Cog):
             # Adds the letter to the correct player list.
             # Removes it from the secret.
             if letter in secret:
-                await ctx.send(
-                    f"`{letter}` was in the secret. You now own it, "
-                    f"{working_msg.author.mention}."
-                )
                 if working_msg.author == p1:
                     p1_letters.append(letter)
                 elif working_msg.author == p2:
                     p2_letters.append(letter)
                 secret.remove(letter)
+
                 if len(secret) > 1:
-                    await ctx.send(f"There are {len(secret)} letters left in the set.")
+                    amt_left = f"There are {len(secret)} letters left in the set."
                 elif len(secret) == 1:
-                    await ctx.send(f"There is {len(secret)} letter left in the set.")
+                    amt_left = f"There is {len(secret)} letter left in the set."
                 else:
-                    await ctx.send("The set is empty.")
+                    amt_left = "The set is empty."
+                
+                await ctx.send(
+                    f"`{letter}` was in the secret. You now own it, "
+                    f"{working_msg.author.mention}.\n"
+                    f"{amt_left}"
+                )
             else:
                 await ctx.send(
                     f"`{letter}` was not in the secret, "
