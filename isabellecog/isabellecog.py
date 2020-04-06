@@ -15,7 +15,7 @@ class isabellecog(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def i(self, ctx, action: str, *, thing: str):
+    async def i(self, ctx, action: str, *, thing: str = ""):
         """bond with isabelle"""
         bad_words = ["fuck", "kill", "beat"]
         if action in bad_words:
