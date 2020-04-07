@@ -46,7 +46,7 @@ class isabellecog(commands.Cog):
         await ctx.author.send(f"Have a good night's sleep, {ctx.author.name}!")
 
     @commands.command()
-    async def hellpit(self, ctx, p2: discord.Member, 
+    async def hellpit(self, ctx, p2: discord.Member,
                       length: int = 9, mode: str = "normal"):
         """
         Welcome to the hellpit. Only one may leave.
@@ -194,7 +194,7 @@ class isabellecog(commands.Cog):
                     amt_left = f"There is {len(secret)} letter left in the set."
                 else:
                     amt_left = "The set is empty."
-                
+
                 await ctx.send(
                     f"`{letter}` was in the secret. You now own it, "
                     f"{working_msg.author.mention}.\n"
