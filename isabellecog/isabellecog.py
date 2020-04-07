@@ -18,8 +18,15 @@ class isabellecog(commands.Cog):
     async def on_message(self, message):
         ctx = await self.bot.get_context(message)
         is_self = ctx.author == ctx.guild.me
-        if "blood" in message.content.lower() and not is_self:
-            await ctx.send("BLOOD FOR THE BLOOD GOD")
+        if not is_self:
+            if "blood" in message.content.lower():
+                await ctx.send("BLOOD FOR THE BLOOD GOD")
+            elif "bajinga" in message.content.lower():
+                async with ctx.typing():
+                    await asyncio.sleep(2.3)
+                    await ctx.send("...What?")
+            elif "sex" in message.content.lower():
+                await ctx.send("https://www.youtube.com/watch?v=RD_WjKf2DRQ")
 
     @commands.command()
     async def i(self, ctx, action: str, *, thing: str = ""):
@@ -33,28 +40,6 @@ class isabellecog(commands.Cog):
             await ctx.send(f"I {action} too, {ctx.author.mention}!")
         else:
             await ctx.send(f"I {action} {thing} too, {ctx.author.mention}!")
-
-    @commands.command()
-    async def bajinga(self, ctx):
-        """bajinga!"""
-        await asyncio.sleep(0.3)
-
-        async with ctx.typing():
-            await asyncio.sleep(3.0)
-
-        await asyncio.sleep(0.7)
-
-        async with ctx.typing():
-            await asyncio.sleep(0.5)
-
-        await asyncio.sleep(0.5)
-
-        async with ctx.typing():
-            await asyncio.sleep(1.5)
-
-        await asyncio.sleep(0.8)
-
-        await ctx.send("What?")
 
     @commands.command()
     async def goodnight(self, ctx):
