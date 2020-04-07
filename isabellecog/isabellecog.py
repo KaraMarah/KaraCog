@@ -14,6 +14,12 @@ class isabellecog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        ctx = await self.bot.get_context(message)
+        if "blood" in message.content:
+            await ctx.send("BLOOD FOR THE BLOOD GOD")
+
     @commands.command()
     async def i(self, ctx, action: str, *, thing: str = ""):
         """bond with isabelle"""
