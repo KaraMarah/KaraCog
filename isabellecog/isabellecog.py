@@ -17,8 +17,8 @@ class isabellecog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        is_self = ctx.author == ctx.guild.me
         ctx = await self.bot.get_context(message)
+        is_self = ctx.author == ctx.guild.me
         if "blood" in message.content.lower and not is_self:
             await ctx.send("BLOOD FOR THE BLOOD GOD")
 
