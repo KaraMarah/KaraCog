@@ -13,7 +13,6 @@ class isabellecog(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        bot_id = "348600853000880139"
 
     @commands.Cog.listener()
     async def on_message(self, message):
