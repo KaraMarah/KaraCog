@@ -45,7 +45,7 @@ class isabellecog(commands.Cog):
 
     @commands.command()
     async def goodnight(self, ctx):
-        await ctx.author.send(f"Have a good night's sleep, {ctx.author.name}!")
+        await ctx.send(f"Have a good night's sleep, {ctx.author.mention}!")
 
     @commands.command()
     async def hellpit(self, ctx, p2: discord.Member,
