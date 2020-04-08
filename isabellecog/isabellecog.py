@@ -20,9 +20,9 @@ class isabellecog(commands.Cog):
         is_self = ctx.author == ctx.guild.me
         if not is_self:
             if "vent" not in message.channel.name:
-                if "RIP AND TEAR" in message.content and "until it is done" not in message.content.lower():
+                if "RIP AND TEAR" == message.content:
                     await ctx.send("UNTIL IT IS DONE")
-                if "rip and tear" in message.content and "until it is done" not in message.content.lower():
+                if "rip and tear" == message.content:
                     await ctx.send("...until it is done.")
                 if "blood for the blood god" in message.content.lower():
                     await ctx.send("SKULLS FOR THE SKULL THRONE")
