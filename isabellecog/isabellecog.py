@@ -22,6 +22,8 @@ class isabellecog(commands.Cog):
             if "vent" not in message.channel.name:
                 if "rip and tear" in message.content.lower():
                     await ctx.send("...until it is done.")
+                if "RIP AND TEAR" in message.content():
+                    await ctx.send("UNTIL IT IS DONE")
 
     @commands.command()
     async def i(self, ctx, action: str, *, thing: str = ""):
