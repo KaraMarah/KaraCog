@@ -22,7 +22,7 @@ class isabellecog(commands.Cog):
             if "vent" not in message.channel.name:
                 if "RIP AND TEAR" in message.content:
                     await ctx.send("UNTIL IT IS DONE")
-                if "rip and tear" in message.content.lower:
+                if "rip and tear" in message.content:
                     await ctx.send("...until it is done.")
 
 
