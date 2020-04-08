@@ -24,6 +24,10 @@ class isabellecog(commands.Cog):
                     await ctx.send("UNTIL IT IS DONE")
                 if "rip and tear" in message.content and "until it is done" not in message.content.lower():
                     await ctx.send("...until it is done.")
+                if "blood for the blood god" in message.content.lower():
+                    await ctx.send("SKULLS FOR THE SKULL THRONE")
+                if "skulls for the skull throne" in message.content.lower():
+                    await ctx.send("BLOOD FOR THE BLOOD GOD")
 
 
     @commands.command()
