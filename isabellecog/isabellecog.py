@@ -14,6 +14,15 @@ class isabellecog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        ctx = await self.bot.get_context(message)
+        is_self = ctx.author == ctx.guild.me
+        if not is_self:
+            if "vent" not in message.channel.name:
+                if "rip and tear" in message.content.lower():
+                    await ctx.send("...until it is done.")
+
     @commands.command()
     async def i(self, ctx, action: str, *, thing: str = ""):
         """bond with isabelle"""
