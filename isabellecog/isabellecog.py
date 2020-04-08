@@ -14,21 +14,6 @@ class isabellecog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        ctx = await self.bot.get_context(message)
-        is_self = ctx.author == ctx.guild.me
-        if not is_self:
-            if "vent" not in message.channel.name:
-                if "blood" in message.content.lower():
-                    await ctx.send("BLOOD FOR THE BLOOD GOD")
-                elif "bajinga" in message.content.lower():
-                    async with ctx.typing():
-                        await asyncio.sleep(2.3)
-                        await ctx.send("...What?")
-                elif "sex" in message.content.lower():
-                    await ctx.send("https://www.youtube.com/watch?v=RD_WjKf2DRQ")
-
     @commands.command()
     async def i(self, ctx, action: str, *, thing: str = ""):
         """bond with isabelle"""
