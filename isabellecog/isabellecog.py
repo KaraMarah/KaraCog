@@ -17,7 +17,7 @@ class isabellecog(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         ctx = await self.bot.get_context(message)
-        is_self = ctx.author == ctx.guild.me
+        is_self = ctx.author == ctx.bot.user
         if not is_self:
             if "vent" not in message.channel.name:
                 if "RIP AND TEAR" == message.content:
