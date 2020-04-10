@@ -139,7 +139,7 @@ class isabellecog(commands.Cog):
             "i simped the pink panther", "im drunk birds",
             "i was bullied by my mother", "eggs in my nostrils",
             "wetbeans andy", "ant hoarder", "the one who pees the bed",
-            "scared by pots and pans", "bajinga!", "SSN 712-45-7834"
+            "scared by pots and pans", "bajinga!", "SSN 712-45-7834", "Marvine"
         ]
 
         # Check for game logic
