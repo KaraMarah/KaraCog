@@ -48,7 +48,7 @@ class isabellecog(commands.Cog):
         await ctx.send(f"Have a good night's sleep, {ctx.author.mention}!")
 
     @commands.command()
-    async def ondrugs(self, ctx, *, input: str):
+    async def sarcasm(self, ctx, *, input: str):
         coinflip = random.randint(0, 1)
         new_text = ""
         if coinflip < 1:
