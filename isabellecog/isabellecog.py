@@ -48,7 +48,7 @@ class isabellecog(commands.Cog):
         await ctx.send(f"Have a good night's sleep, {ctx.author.mention}!")
 
     @commands.command()
-    async def ondrugs(self, ctx, input: str):
+    async def ondrugs(self, ctx, *, input: str):
         await ctx.send(input.swapcase)
 
     @commands.command()
