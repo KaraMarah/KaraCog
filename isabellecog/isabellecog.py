@@ -49,8 +49,7 @@ class isabellecog(commands.Cog):
 
     @commands.command()
     async def ondrugs(self, ctx, input: str):
-        new_text = input.swapcase()
-        await ctx.send(new_text)
+        await ctx.send(input.swapcase)
 
     @commands.command()
     async def hellpit(self, ctx, p2: discord.Member,
