@@ -48,6 +48,11 @@ class isabellecog(commands.Cog):
         await ctx.send(f"Have a good night's sleep, {ctx.author.mention}!")
 
     @commands.command()
+    async def ondrugs(self, ctx, input: str = ""):
+        new_text = input.swapcase()
+        await ctx.send(new_text)
+
+    @commands.command()
     async def hellpit(self, ctx, p2: discord.Member,
                       length: int = 9, mode: str = "normal"):
         """
