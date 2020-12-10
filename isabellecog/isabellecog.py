@@ -49,12 +49,20 @@ class isabellecog(commands.Cog):
 
     @commands.command()
     async def ondrugs(self, ctx, *, input: str):
+        coinflip = random.randint(0, 1)
         new_text = ""
-        for idx in range(len(input)):
-            if not idx % 2 :
-                new_text = new_text + input[idx].upper()
-            else:
-                new_text = new_text + input[idx].lower()
+        if coinflip < 1:
+            for idx in range(len(input)):
+                if not idx % 2 :
+                    new_text = new_text + input[idx].upper()
+                else:
+                    new_text = new_text + input[idx].lower()
+        else:
+            for idx in range(len(input)):
+                if not idx % 2 :
+                    new_text = new_text + input[idx].lower()
+                else:
+                    new_text = new_text + input[idx].upper()
         await ctx.send(new_text)
 
     @commands.command()
