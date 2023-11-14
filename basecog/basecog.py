@@ -7,6 +7,6 @@ class BaseCog(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def command(self, ctx):
+    async def easypeasy(self, ctx):
         """This command does things"""
         await ctx.send("This is a command!")
