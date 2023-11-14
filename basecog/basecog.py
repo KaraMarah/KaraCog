@@ -23,4 +23,4 @@ class BaseCog(commands.Cog):
         is_self = ctx.author == ctx.bot.user
         if not is_self:
             if ctx.author == 830225163722293258:
-                ctx.react
+                ctx.send("this message is from mark!")
