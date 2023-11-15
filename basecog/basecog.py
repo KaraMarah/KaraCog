@@ -24,3 +24,5 @@ class BaseCog(commands.Cog):
         if not is_self:
             if message.author.id == 830225163722293258:
                 await message.add_reaction("bait2")
+            if message.author.id == 133691814631833600:
+                await message.add_reaction("bait2")
