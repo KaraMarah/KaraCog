@@ -27,5 +27,7 @@ class BaseCog(commands.Cog):
         if not is_self:
             if message.author.id == 830225163722293258:
                 flip = random.randrange(1)
-                if flip == 1:
-                    await message.add_reaction(reactions[flip])
+                await message.add_reaction(reactions[flip])
+            if message.author.id == 133691814631833600:
+                flip = random.randrange(1)
+                await message.add_reaction(reactions[flip])
