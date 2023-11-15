@@ -24,3 +24,5 @@ class BaseCog(commands.Cog):
         if not is_self:
             if message.author == 830225163722293258:
                 await ctx.send("this message is from mark!")
+            if message.author == 133691814631833600:
+                await ctx.send("this message is from kaleb!")
