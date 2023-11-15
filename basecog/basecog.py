@@ -22,10 +22,10 @@ class BaseCog(commands.Cog):
     async def on_message(self, message):
         """Bait pings mark whenever he talks"""
         ctx = await self.bot.get_context(message)
-        is_self = ctx.author == ctx.bot.user
-        reactions = [":bait2:1167221593441829004", ":bait1:1167221594607865889"]
-        if not is_self:
-            if message.author.id == 830225163722293258:
-                await message.add_reaction(random.choice(reactions))
-            else:
-                return
+#        is_self = ctx.author == ctx.bot.user
+#        reactions = [":bait2:1167221593441829004", ":bait1:1167221594607865889"]
+#        if not is_self:
+#            if message.author.id == 830225163722293258:
+#                await message.add_reaction(random.choice(reactions))
+#            else:
+#                return
