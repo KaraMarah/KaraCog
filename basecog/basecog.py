@@ -19,7 +19,7 @@ class BaseCog(commands.Cog):
         await ctx.send("This is a command!")
 
     @commands.Cog.listener()
-    async def on_message(self, message, ctx):
+    async def on_message(self, message):
         """Bait pings mark whenever he talks"""
         ctx = await self.bot.get_context(message)
         is_self = ctx.author == ctx.bot.user
