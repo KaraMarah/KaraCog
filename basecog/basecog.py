@@ -27,4 +27,4 @@ class BaseCog(commands.Cog):
         if not is_self:
             if message.author.id == 830225163722293258:
                 flip = random.randrange(2)
-                await message.add_reaction(random.choice([":bait2:1167221593441829004", ":bait1:1167221594607865889"]))
+                await message.add_reaction(random.choice(reactions))
