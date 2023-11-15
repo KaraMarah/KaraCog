@@ -19,10 +19,9 @@ class BaseCog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
+        """Bait pings mark whenever he talks"""
         ctx = await self.bot.get_context(message)
         is_self = ctx.author == ctx.bot.user
         if not is_self:
             if message.author.id == 830225163722293258:
-                await message.add_reaction(":bait2:1167221593441829004")
-            if message.author.id == 133691814631833600:
                 await message.add_reaction(":bait2:1167221593441829004")
