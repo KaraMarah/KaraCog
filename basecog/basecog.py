@@ -25,6 +25,8 @@ class BaseCog(commands.Cog):
         is_self = ctx.author == ctx.bot.user
         reactions = [":bait2:1167221593441829004", ":bait1:1167221594607865889"]
         if not is_self:
+            ctx.send(message.author)
             if message.author.id == 830225163722293258:
-                flip = random.randrange(2)
                 await message.add_reaction(random.choice(reactions))
+        else:
+            return
