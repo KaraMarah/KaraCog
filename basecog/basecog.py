@@ -18,7 +18,7 @@ class BaseCog(commands.Cog):
         await ctx.send("This is a command!")
 
     @commands.Cog.listener()
-    async def on_message(self, message):
+    async def on_message(self, message, ctx):
         ctx = await self.bot.get_context(message)
         is_self = ctx.author == ctx.bot.user
         if not is_self:
