@@ -17,12 +17,12 @@ class BaseCog(commands.Cog):
         """This command does things"""
         await ctx.send("This is a command!")
 
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        ctx = await self.bot.get_context(message)
-        is_self = ctx.author == ctx.bot.user
-        if not is_self:
-            if message.author == 830225163722293258:
-                await ctx.send("this message is from mark!")
-            if message.author == 133691814631833600:
-                await ctx.send("this message is from kaleb!")
+#    @commands.Cog.listener()
+#    async def on_message(self, message):
+#        ctx = await self.bot.get_context(message)
+#        is_self = ctx.author == ctx.bot.user
+#        if not is_self:
+#            if message.author == 830225163722293258:
+#                await ctx.send("this message is from mark!")
+#            if message.author == 133691814631833600:
+#                await ctx.send("this message is from kaleb!")
