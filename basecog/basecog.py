@@ -28,4 +28,4 @@ class BaseCog(commands.Cog):
             if message.author.id == 830225163722293258:
                 await message.add_reaction(random.choice(reactions))
             else:
-                ctx.send(message.author)
+                await ctx.send(message.author)
