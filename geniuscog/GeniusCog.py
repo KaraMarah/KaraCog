@@ -36,6 +36,7 @@ class GeniusCog(commands.Cog):
             )
         else:
             song_search = lyricsgenius.Genius(genius_token["access_token"])
+            song_search.verbose = False
             song_search.skip_non_songs = True
             song_search.remove_section_headers = False
             song = song_search.search_song(search)
