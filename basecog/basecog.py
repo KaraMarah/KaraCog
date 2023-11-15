@@ -23,6 +23,4 @@ class BaseCog(commands.Cog):
         is_self = ctx.author == ctx.bot.user
         if not is_self:
             if message.author.id == 830225163722293258:
-                await ctx.send("this message is from mark!")
-            if message.author.id == 133691814631833600:
-                await ctx.send("this message is from kaleb!")
+                await message.add_reaction("bait2")
