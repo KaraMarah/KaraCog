@@ -1,7 +1,6 @@
 import discord
 import string
 import asyncio
-import horoscope
 import random
 from redbot.core import commands
 from redbot.core import checks
@@ -18,11 +17,6 @@ class BaseCog(commands.Cog):
     async def easypeasy(self, ctx):
         """This command does things"""
         await ctx.send("This is a command!")
-    
-    @commands.command()
-    async def horoscope(self, ctx, sign: str):
-        horoscopeGet = horoscope.Horoscope.get_todays_horoscope(sign)
-        await ctx.send(horoscopeGet)
 
     @commands.Cog.listener()
     async def on_message(self, message):
