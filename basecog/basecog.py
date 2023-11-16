@@ -1,7 +1,7 @@
 import discord
 import string
 import asyncio
-from horoscope import Horoscope
+import horoscope
 import random
 from redbot.core import commands
 from redbot.core import checks
@@ -21,7 +21,7 @@ class BaseCog(commands.Cog):
     
     @commands.command()
     async def horoscope(self, ctx, sign: str):
-        horoscopeGet = Horoscope.get_todays_horoscope(sign)
+        horoscopeGet = horoscope.Horoscope.get_todays_horoscope(sign)
         await ctx.send(horoscopeGet)
 
     @commands.Cog.listener()
